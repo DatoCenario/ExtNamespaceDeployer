@@ -94,7 +94,6 @@ namespace ExtJsNamespaceDeployer
 
         /// <summary>
         /// Reads all to first match excluding it.
-        /// This method aviable only for seekable steams
         /// </summary>
         /// <param name="reader"></param>
         /// <param name="match"></param>
@@ -102,11 +101,6 @@ namespace ExtJsNamespaceDeployer
         public static string ReadToFirstMatch(this UnbufferedStreamReader reader, string match)
         {
             ValidateStreamNotReachedEnd(reader);
-
-            if (!reader.BaseStream.CanSeek)
-            { 
-                throw new InvalidOperationException("This method aviable only on seekable streams.");
-            }
 
             var sb = new StringBuilder();
 
